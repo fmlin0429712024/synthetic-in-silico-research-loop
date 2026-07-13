@@ -15,7 +15,7 @@
     {"id": "MOL-E55", "mechanism_hypothesis": "inhibitor", "computational_fit": 0.79, "developability": 0.55, "novelty": 0.76}
   ],
   "simulated_evidence": {
-    "MOL-A17": {"assay_effect": 0.84, "preclinical_signal": 0.76, "safety_signal": 0.74, "cohort_response": 0.70, "subgroup_consistency": 0.67},
-    "MOL-B42": {"assay_effect": 0.75, "preclinical_signal": 0.79, "safety_signal": 0.85, "cohort_response": 0.77, "subgroup_consistency": 0.81}
+    "MOL-A17": {"trial_efficacy": 0.84, "trial_safety": 0.74, "renal_cohort_response": 0.70, "subgroup_consistency": 0.67},
+    "MOL-B42": {"trial_efficacy": 0.75, "trial_safety": 0.85, "renal_cohort_response": 0.77, "subgroup_consistency": 0.81}
   }
 }

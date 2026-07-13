@@ -9,16 +9,19 @@ RIEL demonstrates the closed-loop AI science pattern:
 It demonstrates the orchestration and decision layer behind an AI-scientist platform. It does **not** claim biological validation, drug discovery, treatment recommendation, or clinical efficacy.
 
 ```mermaid
-flowchart LR
-    Q[Research question] --> H[Target / mechanism hypothesis]
-    H --> C[In-silico candidate prioritization]
-    C --> E[Experiment or data collection]
-    E --> I[Evidence integration]
-    I --> D{Scientist-reviewed decision}
-    D -->|GO| N[Advance / design next study]
-    D -->|HOLD| E
-    D -->|NO-GO| Q
-    N --> Q
+flowchart TD
+    Q[Renal research question] --> H[Target / mechanism hypothesis]
+    H --> S[Structural and chemical evidence<br/>AlphaFold-type models + docking]
+    S --> C[Repurposing candidate pool<br/>for example: 100 → 10]
+    C --> M[Research intelligence / prioritization model]
+    T[Historical trial evidence<br/>synthetic in this POC] --> M
+    P[Longitudinal renal patient evidence<br/>synthetic in this POC] --> M
+    M --> D{Scientist-reviewed decision}
+    D -->|GO| N[Design next validation study]
+    D -->|HOLD| M
+    D -->|NO-GO| X[Preserve negative evidence]
+    N --> R[New clinical-study evidence]
+    R --> M
 ```
 
 ## Why this matters
@@ -31,7 +34,7 @@ Renal research is a sequence of expensive, uncertain decisions. The value of AI 
 |---|---|---|
 | Research context | Fictional ESKD repurposing hypothesis and target | Renal research question, literature, internal program context |
 | Upstream reasoning | Transparent ranking of fictional existing-drug candidates | Structure/interaction models, docking, chemistry models, literature and data analysis |
-| Evidence | Synthetic assay, safety, and renal-cohort signals | ELN/LIMS, assay systems, CRO results, biomarkers, governed longitudinal renal data |
+| Evidence | Synthetic trial-like and renal-cohort signals | Historical trial evidence, biomarkers, and governed longitudinal renal data |
 | Decision | Traceable `GO` / `HOLD` / `NO-GO` | Scientist-reviewed experiment and program decisions |
 | Learning loop | Revised score and next action | New hypotheses, experiment designs, specialized model improvement, organizational knowledge |
 
@@ -40,6 +43,7 @@ Renal research is a sequence of expensive, uncertain decisions. The value of AI 
 All targets, molecules, lab results, cohort signals, and decisions are synthetic. This repository is educational software—not medical software.
 
 - It does not run AlphaFold, docking, molecular dynamics, wet-lab experiments, animal studies, or clinical trials.
+- Wet-lab and animal studies are deliberately abstracted out of this POC; the synthetic clinical-evidence layer represents the downstream evidence and feedback loop.
 - AlphaFold-type models belong in the upstream structural-hypothesis layer; they do not prove efficacy or replace validation.
 - Wet-lab and clinical evidence normally improves scientific decisions, disease/response models, and future experiment selection—not automatically AlphaFold itself.
 - Every meaningful real-world decision requires scientist review, data governance, and regulated validation.

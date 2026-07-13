@@ -8,9 +8,8 @@
 |---|---|---|
 | `computational_fit` | Initial in-silico candidate signal | Structure, docking, chemistry, or model output |
 | `developability` | Initial practical feasibility signal | ADMET, formulation, synthesis, or program constraints |
-| `assay_effect` | Simulated biological response | Cell, organoid, or biochemical assay result |
-| `preclinical_signal` | Simulated in-vivo / preclinical evidence | Animal or other preclinical study output |
-| `safety_signal` | Simulated safety evidence | Toxicology or safety data |
+| `trial_efficacy` | Simulated clinical-trial efficacy signal | Historical or prospective clinical-study result |
+| `trial_safety` | Simulated clinical-trial safety signal | Historical or prospective clinical-study safety result |
 | `cohort_response` | Simulated renal-cohort response | Trial, patient, or biomarker data analysis |
 | `subgroup_consistency` | Simulated consistency across a renal subgroup | Patient stratification / biomarker subgroup result |
 
@@ -29,4 +28,4 @@ The synthetic values make this loop observable and reproducible. In a real deplo
 
 ## What “model improvement” means
 
-Downstream evidence may validate or reject hypotheses, calibrate a decision score, improve a specialized assay/safety/response model, or guide the next experiment. It does **not** mean every new lab or clinical record is used to fine-tune every upstream model. In particular, clinical data is generally not direct training data for a protein-structure model such as AlphaFold. The public POC contains synthetic data only; no patient data is included.
+Downstream evidence may validate or reject hypotheses, calibrate a decision score, improve a specialized safety/response model, or guide the next validation study. It does **not** mean every new clinical record is used to fine-tune every upstream model. In particular, clinical data is generally not direct training data for a protein-structure model such as AlphaFold. The public POC contains synthetic data only; no patient data is included.

@@ -20,13 +20,12 @@ def prior_score(candidate):
 
 
 def evidence_score(evidence):
-    """Synthetic evidence integration across experimental and translational signals."""
+    """Synthetic integration of trial-like and longitudinal renal-cohort signals."""
     return round(
-        0.30 * evidence["assay_effect"]
-        + 0.25 * evidence["preclinical_signal"]
-        + 0.25 * evidence["safety_signal"]
-        + 0.12 * evidence["cohort_response"]
-        + 0.08 * evidence["subgroup_consistency"],
+        0.35 * evidence["trial_efficacy"]
+        + 0.25 * evidence["trial_safety"]
+        + 0.25 * evidence["renal_cohort_response"]
+        + 0.15 * evidence["subgroup_consistency"],
         3,
     )
 
@@ -69,8 +68,8 @@ def main():
         "target_hypothesis": program["target"]["hypothesis"],
         "trace": [
             "Ranked synthetic candidates from prior computational evidence.",
-            "Selected the top two candidates for simulated downstream evidence.",
-            "Integrated synthetic assay, preclinical, safety, and cohort-response signals.",
+            "Selected the top two candidates for synthetic clinical-evidence review.",
+            "Integrated synthetic trial efficacy, trial safety, renal-cohort response, and subgroup signals.",
             "Generated a transparent, human-review-required next decision.",
         ],
         "initial_ranking": [{"candidate_id": item["id"], "score": item["prior_score"]} for item in ranked],
