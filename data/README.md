@@ -1,24 +1,32 @@
 # Synthetic Data
 
-`research-program.json` is a fictional research program with a target, five candidate molecules, and synthetic evidence for the two selected candidates.
+`research-program.json` is a fictional research program: one target, five candidate molecules, and downstream evidence for the two candidates selected for simulated testing.
 
-The evidence represents three downstream sources:
+## Evidence schema
 
-```text
-assay / preclinical data + safety data + cohort-response data
-                 ↓
-      integrated evidence score
-                 ↓
-    revised candidate priority and next action
+| Field | Meaning in the POC | Real-world analogue |
+|---|---|---|
+| `computational_fit` | Initial in-silico candidate signal | Structure, docking, chemistry, or model output |
+| `developability` | Initial practical feasibility signal | ADMET, formulation, synthesis, or program constraints |
+| `assay_effect` | Simulated biological response | Cell, organoid, or biochemical assay result |
+| `preclinical_signal` | Simulated in-vivo / preclinical evidence | Animal or other preclinical study output |
+| `safety_signal` | Simulated safety evidence | Toxicology or safety data |
+| `cohort_response` | Simulated translational response | Trial, patient, or biomarker data analysis |
+| `subgroup_consistency` | Simulated consistency across a subgroup | Patient stratification / biomarker subgroup result |
+
+## Feedback loop
+
+```mermaid
+flowchart LR
+    A[Initial candidate score] --> B[Select candidates]
+    B --> C[Collect new evidence]
+    C --> D[Integrate evidence]
+    D --> E[Re-rank candidate and choose next action]
+    E --> B
 ```
 
-## Feedback-loop principle
+The synthetic values make this loop observable and reproducible. In a real deployment, each evidence item would also need provenance, data-quality checks, access controls, and scientist interpretation.
 
-Real wet-lab and clinical data do **not normally fine-tune AlphaFold**. They can instead:
+## What “model improvement” means
 
-- validate or reject a target/candidate hypothesis;
-- improve a disease-, assay-, safety-, or patient-response model when appropriate data and governance exist;
-- calibrate decision thresholds and determine the next experiment;
-- create reusable organizational evidence for the next program.
-
-This POC represents that feedback with deterministic synthetic values. It makes the decision loop visible without claiming biological truth.
+Downstream evidence may validate or reject hypotheses, calibrate a decision score, improve a specialized assay/safety/response model, or guide the next experiment. It does **not** mean every new lab or clinical record is used to fine-tune every upstream model. In particular, clinical data is generally not direct training data for a protein-structure model such as AlphaFold.

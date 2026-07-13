@@ -1,34 +1,48 @@
-# Pipeline Map
+# End-to-End Research Pipeline
 
-```text
-Disease question
-  ↓
-Target hypothesis
-  ↓
-In-silico candidate prioritization
-  ├─ Protein structure / interaction hypothesis: AlphaFold-type models
-  ├─ Molecule ranking: docking, chemistry models, literature, prior data
-  └─ POC: transparent synthetic scoring rule
-  ↓
-Wet-lab and preclinical evidence
-  └─ POC: simulated assay, efficacy, and safety signals
-  ↓
-Clinical / translational evidence
-  └─ POC: simulated cohort response and subgroup consistency
-  ↓
-Evidence integration + scientist review
-  ↓
-GO / HOLD / NO-GO → next target, candidate, or experiment iteration
+## The real pipeline
+
+```mermaid
+flowchart TD
+    A[1. Disease question] --> B[2. Target / mechanism hypothesis]
+    B --> C[3. Computational hypothesis and candidate generation]
+    C --> D[4. Candidate prioritization]
+    D --> E[5. Wet-lab and preclinical validation]
+    E --> F[6. Translational / clinical evidence]
+    F --> G[7. Evidence integration and scientist review]
+    G --> H{GO / HOLD / NO-GO}
+    H -->|Advance| I[Next development decision]
+    H -->|Learn more| C
+    H -->|Stop| J[Preserve negative evidence]
+    I --> C
 ```
 
-## Real-world mapping
+This is a long research and development pipeline in reality. The POC compresses it into minutes by using synthetic data only.
 
-| POC step | Real technology or product category |
-|---|---|
-| Structure / interaction hypothesis | AlphaFold-type structure and interaction models |
-| Candidate prioritization | Docking, virtual screening, chemistry models, scientific literature search |
-| Experimental evidence | ELN/LIMS, assay platforms, CRO outputs, biomarker systems |
-| Clinical evidence | Governed trial, patient, and biomarker data systems |
-| Research orchestration | AI scientist / agent platform, data connectors, provenance, evaluation, human review |
+## Technology map
 
-AlphaFold is one upstream capability. It helps formulate structural and interaction hypotheses; it does not itself prove efficacy, replace wet-lab work, or make clinical decisions.
+| Stage | Question | Typical AI / data capability | POC representation |
+|---|---|---|---|
+| 1–2 | What disease mechanism is worth investigating? | Literature, omics, experimental and clinical evidence synthesis | Fictional research question and target hypothesis |
+| 3 | What might bind, modify, or affect the target? | Protein structure/interaction models such as AlphaFold-type models; generative chemistry | Fixed fictional candidate pool |
+| 4 | Which candidate should receive scarce resources first? | Docking, virtual screening, chemistry/developability models, prior evidence | Transparent weighted score |
+| 5 | Does the hypothesis hold in biological systems? | ELN/LIMS integration, assay/image/omics analysis, CRO outputs | Synthetic assay, preclinical, and safety signals |
+| 6 | Is there evidence across patients or biomarkers? | Governed clinical/biomarker data analysis, patient stratification | Synthetic cohort response and subgroup consistency |
+| 7 | What should happen next? | Agent orchestration, evidence provenance, evaluation, human review | Traceable score and `GO` / `HOLD` / `NO-GO` |
+
+## Where AlphaFold fits
+
+AlphaFold-type models are an important **upstream** capability. They predict protein structure and, in newer interaction-oriented approaches, support hypotheses about protein–molecule or protein–protein interactions. They help shrink the search space; they do not independently choose a drug, prove an effect in a living system, or replace clinical validation.
+
+## What the loop learns
+
+```mermaid
+flowchart LR
+    X[New lab / preclinical / clinical evidence] --> Y[Validate or reject hypothesis]
+    Y --> Z[Update candidate priority]
+    Z --> AA[Choose next experiment]
+    AA --> X
+    Y --> AB[Improve disease, assay, safety, or response models when appropriate]
+```
+
+The feedback is not automatically “fine-tune AlphaFold with clinical data.” Different data types serve different models. The common outcome is better scientific prioritization and a more defensible next decision.
