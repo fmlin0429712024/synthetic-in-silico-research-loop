@@ -1,0 +1,21 @@
+{
+  "program_id": "T2D-SYN-01",
+  "label": "Synthetic metabolic-disease research sandbox",
+  "disclaimer": "All entities and values are fictional. They do not represent biological, pharmacological, clinical, or medical claims.",
+  "target": {
+    "id": "TGT-17",
+    "hypothesis": "Modulating TGT-17 may improve a synthetic metabolic-response signal.",
+    "prior_evidence": 0.72
+  },
+  "candidates": [
+    {"id": "MOL-A17", "mechanism_hypothesis": "modulator", "computational_fit": 0.88, "developability": 0.72, "novelty": 0.58},
+    {"id": "MOL-B42", "mechanism_hypothesis": "modulator", "computational_fit": 0.81, "developability": 0.83, "novelty": 0.63},
+    {"id": "MOL-C09", "mechanism_hypothesis": "inhibitor", "computational_fit": 0.75, "developability": 0.66, "novelty": 0.71},
+    {"id": "MOL-D31", "mechanism_hypothesis": "modulator", "computational_fit": 0.68, "developability": 0.89, "novelty": 0.41},
+    {"id": "MOL-E55", "mechanism_hypothesis": "inhibitor", "computational_fit": 0.79, "developability": 0.55, "novelty": 0.76}
+  ],
+  "simulated_evidence": {
+    "MOL-A17": {"assay_effect": 0.84, "preclinical_signal": 0.76, "safety_signal": 0.74, "cohort_response": 0.70, "subgroup_consistency": 0.67},
+    "MOL-B42": {"assay_effect": 0.75, "preclinical_signal": 0.79, "safety_signal": 0.85, "cohort_response": 0.77, "subgroup_consistency": 0.81}
+  }
+}
