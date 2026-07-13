@@ -1,10 +1,12 @@
-# Synthetic In-Silico Research Loop
+# RIEL — Renal Intelligence & Evidence Loop
 
-A small dry-lab proof of concept for the **closed-loop AI science** pattern:
+A synthetic dry-lab POC for prioritizing **drug-repurposing research hypotheses in end-stage kidney disease (ESKD)**.
+
+RIEL demonstrates the closed-loop AI science pattern:
 
 > use computation to prioritize a research hypothesis, use experimental evidence to test it, then use the evidence to make the next decision better.
 
-It demonstrates the orchestration and decision layer behind an AI-scientist platform. It does **not** claim biological validation, drug discovery, or clinical efficacy.
+It demonstrates the orchestration and decision layer behind an AI-scientist platform. It does **not** claim biological validation, drug discovery, treatment recommendation, or clinical efficacy.
 
 ```mermaid
 flowchart LR
@@ -21,15 +23,15 @@ flowchart LR
 
 ## Why this matters
 
-Drug research is a sequence of expensive, uncertain decisions. The value of AI is not to eliminate wet labs or clinical studies. It is to reduce uncertainty before each investment, connect fragmented evidence, and make the next experiment more purposeful.
+Renal research is a sequence of expensive, uncertain decisions. The value of AI is not to eliminate wet labs or clinical studies. It is to reduce uncertainty before each investment, connect fragmented evidence, and make the next experiment more purposeful.
 
 ## What this POC contains
 
 | Layer | In this POC | Real-world equivalent |
 |---|---|---|
-| Research context | Fictional disease mechanism and target | Scientist question, literature, internal program context |
-| Upstream reasoning | Transparent candidate ranking | Structure/interaction models, docking, chemistry models, literature and data analysis |
-| Evidence | Synthetic assay, preclinical, safety, and cohort signals | ELN/LIMS, assay systems, CRO results, biomarkers, governed clinical data |
+| Research context | Fictional ESKD repurposing hypothesis and target | Renal research question, literature, internal program context |
+| Upstream reasoning | Transparent ranking of fictional existing-drug candidates | Structure/interaction models, docking, chemistry models, literature and data analysis |
+| Evidence | Synthetic assay, safety, and renal-cohort signals | ELN/LIMS, assay systems, CRO results, biomarkers, governed longitudinal renal data |
 | Decision | Traceable `GO` / `HOLD` / `NO-GO` | Scientist-reviewed experiment and program decisions |
 | Learning loop | Revised score and next action | New hypotheses, experiment designs, specialized model improvement, organizational knowledge |
 
@@ -41,6 +43,7 @@ All targets, molecules, lab results, cohort signals, and decisions are synthetic
 - AlphaFold-type models belong in the upstream structural-hypothesis layer; they do not prove efficacy or replace validation.
 - Wet-lab and clinical evidence normally improves scientific decisions, disease/response models, and future experiment selection—not automatically AlphaFold itself.
 - Every meaningful real-world decision requires scientist review, data governance, and regulated validation.
+- Real DaVita or other patient data is **not** included and must never be placed in this public repository.
 
 ## Explore the project
 

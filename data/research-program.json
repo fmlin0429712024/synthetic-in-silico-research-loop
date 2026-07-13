@@ -1,10 +1,10 @@
 {
-  "program_id": "T2D-SYN-01",
-  "label": "Synthetic metabolic-disease research sandbox",
+  "program_id": "RIEL-ESKD-SYN-01",
+  "label": "Synthetic ESKD drug-repurposing research sandbox",
   "disclaimer": "All entities and values are fictional. They do not represent biological, pharmacological, clinical, or medical claims.",
   "target": {
     "id": "TGT-17",
-    "hypothesis": "Modulating TGT-17 may improve a synthetic metabolic-response signal.",
+    "hypothesis": "An existing fictional candidate may modulate TGT-17 and improve a synthetic renal-response signal in a defined ESKD subgroup.",
     "prior_evidence": 0.72
   },
   "candidates": [

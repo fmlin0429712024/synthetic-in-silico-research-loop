@@ -1,6 +1,6 @@
 # Synthetic Data
 
-`research-program.json` is a fictional research program: one target, five candidate molecules, and downstream evidence for the two candidates selected for simulated testing.
+`research-program.json` is a fictional ESKD drug-repurposing research program: one target, five fictional existing-drug candidates, and downstream evidence for the two candidates selected for simulated testing.
 
 ## Evidence schema
 
@@ -11,8 +11,8 @@
 | `assay_effect` | Simulated biological response | Cell, organoid, or biochemical assay result |
 | `preclinical_signal` | Simulated in-vivo / preclinical evidence | Animal or other preclinical study output |
 | `safety_signal` | Simulated safety evidence | Toxicology or safety data |
-| `cohort_response` | Simulated translational response | Trial, patient, or biomarker data analysis |
-| `subgroup_consistency` | Simulated consistency across a subgroup | Patient stratification / biomarker subgroup result |
+| `cohort_response` | Simulated renal-cohort response | Trial, patient, or biomarker data analysis |
+| `subgroup_consistency` | Simulated consistency across a renal subgroup | Patient stratification / biomarker subgroup result |
 
 ## Feedback loop
 
@@ -29,4 +29,4 @@ The synthetic values make this loop observable and reproducible. In a real deplo
 
 ## What “model improvement” means
 
-Downstream evidence may validate or reject hypotheses, calibrate a decision score, improve a specialized assay/safety/response model, or guide the next experiment. It does **not** mean every new lab or clinical record is used to fine-tune every upstream model. In particular, clinical data is generally not direct training data for a protein-structure model such as AlphaFold.
+Downstream evidence may validate or reject hypotheses, calibrate a decision score, improve a specialized assay/safety/response model, or guide the next experiment. It does **not** mean every new lab or clinical record is used to fine-tune every upstream model. In particular, clinical data is generally not direct training data for a protein-structure model such as AlphaFold. The public POC contains synthetic data only; no patient data is included.
