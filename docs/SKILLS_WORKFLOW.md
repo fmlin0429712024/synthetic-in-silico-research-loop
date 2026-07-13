@@ -4,15 +4,15 @@ This workflow begins **after** the upstream scientific system has emitted a rank
 
 ```mermaid
 flowchart TD
-    A[Ranked research hypothesis<br/>from upstream prioritization model] --> B[clinical-evidence-intake<br/>short-running]
+    A[Ranked research hypothesis<br/>from upstream prioritization model] --> E[renal-research-orchestration<br/>scaffolding]
+    E --> B[clinical-evidence-intake<br/>short-running]
     B --> C[renal-cohort-analysis<br/>short-running]
     C --> D[evidence-decision-pack<br/>short-running]
-    D --> E[renal-research-orchestration<br/>scaffolding]
-    E --> F{Scientist review}
+    D --> F{Scientist review}
     F -->|GO| G[Design next clinical validation]
     G --> H[New trial / care-delivery evidence]
-    H --> B
-    F -->|HOLD| B
+    H --> E
+    F -->|HOLD| E
     F -->|NO-GO| I[Preserve negative evidence]
 
     classDef short fill:#dcfce7,stroke:#16a34a,color:#111827;
