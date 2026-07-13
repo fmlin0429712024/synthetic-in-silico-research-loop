@@ -1,6 +1,6 @@
 # Synthetic Data
 
-`research-program.json` is a fictional ESKD drug-repurposing research program: one target, five fictional existing-drug candidates, and downstream evidence for the two candidates selected for simulated testing.
+`research-program.json` is a fictional ESKD therapeutics research program: one target, five fictional candidates, and downstream evidence for the two candidates selected for simulated testing. The same orchestration pattern can support both new-discovery and drug-repurposing hypotheses.
 
 ## Evidence schema
 
@@ -10,7 +10,7 @@
 | `developability` | Initial practical feasibility signal | ADMET, formulation, synthesis, or program constraints |
 | `trial_efficacy` | Simulated clinical-trial efficacy signal | Historical or prospective clinical-study result |
 | `trial_safety` | Simulated clinical-trial safety signal | Historical or prospective clinical-study safety result |
-| `cohort_response` | Simulated renal-cohort response | Trial, patient, or biomarker data analysis |
+| `renal_cohort_response` | Simulated dialysis-provider cohort response | Trial, patient, or biomarker data analysis |
 | `subgroup_consistency` | Simulated consistency across a renal subgroup | Patient stratification / biomarker subgroup result |
 
 ## Feedback loop

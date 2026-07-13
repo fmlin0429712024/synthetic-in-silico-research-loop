@@ -1,21 +1,21 @@
-# RIEL — Renal Intelligence & Evidence Loop
+# RTRO — Renal Therapeutics Research Orchestrator
 
-A synthetic dry-lab POC for prioritizing **drug-repurposing research hypotheses in end-stage kidney disease (ESKD)**.
+A synthetic dry-lab POC for an AI-orchestrated renal therapeutics research pipeline. It connects upstream discovery and drug-repurposing hypotheses with downstream clinical evidence and iterative research decisions.
 
-RIEL demonstrates the closed-loop AI science pattern:
+RTRO demonstrates the closed-loop AI science pattern:
 
 > use computation to prioritize a research hypothesis, use experimental evidence to test it, then use the evidence to make the next decision better.
 
-It demonstrates the orchestration and decision layer behind an AI-scientist platform. It does **not** claim biological validation, drug discovery, treatment recommendation, or clinical efficacy.
+It demonstrates the orchestration and decision layer behind an AI-scientist platform. It does **not** claim biological validation, treatment recommendation, or clinical efficacy.
 
 ```mermaid
 flowchart TD
     Q[Renal research question] --> H[Target / mechanism hypothesis]
-    H --> S[Structural and chemical evidence<br/>AlphaFold-type models + docking]
-    S --> C[Repurposing candidate pool<br/>for example: 100 → 10]
-    C --> M[Research intelligence / prioritization model]
+    H --> S[Upstream scientific tools<br/>AlphaFold-type models + docking + literature]
+    S --> C[Discovery or repurposing candidate hypotheses]
+    C --> M[Specialized therapeutic prioritization model]
     T[Historical trial evidence<br/>synthetic in this POC] --> M
-    P[Longitudinal renal patient evidence<br/>synthetic in this POC] --> M
+    P[Dialysis-provider longitudinal patient data<br/>synthetic in this POC] --> M
     M --> D{Scientist-reviewed decision}
     D -->|GO| N[Design next validation study]
     D -->|HOLD| M
@@ -32,9 +32,9 @@ Renal research is a sequence of expensive, uncertain decisions. The value of AI 
 
 | Layer | In this POC | Real-world equivalent |
 |---|---|---|
-| Research context | Fictional ESKD repurposing hypothesis and target | Renal research question, literature, internal program context |
-| Upstream reasoning | Transparent ranking of fictional existing-drug candidates | Structure/interaction models, docking, chemistry models, literature and data analysis |
-| Evidence | Synthetic trial-like and renal-cohort signals | Historical trial evidence, biomarkers, and governed longitudinal renal data |
+| Research context | Fictional renal therapeutic hypothesis and target | Renal research question, literature, internal program context |
+| Upstream reasoning | Transparent discovery / repurposing candidate ranking | Structure/interaction models, docking, chemistry models, literature and data analysis |
+| Evidence | Synthetic trial-like and dialysis-provider cohort signals | Historical trial evidence, biomarkers, and governed longitudinal patient data |
 | Decision | Traceable `GO` / `HOLD` / `NO-GO` | Scientist-reviewed experiment and program decisions |
 | Learning loop | Revised score and next action | New hypotheses, experiment designs, specialized model improvement, organizational knowledge |
 
@@ -51,7 +51,7 @@ All targets, molecules, lab results, cohort signals, and decisions are synthetic
 
 ## Explore the project
 
-- [End-to-end pipeline and technology map](docs/PIPELINE.md)
+- [End-to-end pipeline, orchestration, and technology map](docs/PIPELINE.md)
 - [Synthetic data model and feedback loop](data/README.md)
 
 ## Run locally

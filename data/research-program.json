@@ -1,6 +1,6 @@
 {
-  "program_id": "RIEL-ESKD-SYN-01",
-  "label": "Synthetic ESKD drug-repurposing research sandbox",
+  "program_id": "RTRO-ESKD-SYN-01",
+  "label": "Synthetic ESKD therapeutics research sandbox",
   "disclaimer": "All entities and values are fictional. They do not represent biological, pharmacological, clinical, or medical claims.",
   "target": {
     "id": "TGT-17",
