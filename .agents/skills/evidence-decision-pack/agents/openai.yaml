@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evidence Decision Pack"
+  short_description: "Create traceable research decision evidence packs."
+  default_prompt: "Use $evidence-decision-pack to create a synthetic research decision pack."

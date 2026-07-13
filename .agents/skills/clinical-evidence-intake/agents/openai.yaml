@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clinical Evidence Intake"
+  short_description: "Normalize governed trial and patient evidence."
+  default_prompt: "Use $clinical-evidence-intake to normalize a synthetic clinical evidence package."

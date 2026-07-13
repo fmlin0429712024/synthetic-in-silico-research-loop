@@ -1,0 +1,4 @@
+interface:
+  display_name: "Renal Research Orchestration"
+  short_description: "Scaffold a governed renal research evidence workflow."
+  default_prompt: "Use $renal-research-orchestration to scaffold a synthetic renal evidence workflow."

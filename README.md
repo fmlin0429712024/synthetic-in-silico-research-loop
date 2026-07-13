@@ -62,6 +62,13 @@ All targets, molecules, lab results, cohort signals, and decisions are synthetic
 
 - [End-to-end pipeline, orchestration, and technology map](docs/PIPELINE.md)
 - [Synthetic data model and feedback loop](data/README.md)
+- [Phase 2: skills-based clinical evidence workflow](docs/SKILLS_WORKFLOW.md)
+
+## Phase 2: skills-based workflow scaffold
+
+The full pipeline can run for years. RTRO prototypes the post-prioritization part as small, inspectable Codex skills: clinical-evidence intake, renal-cohort analysis, evidence-decision packaging, and orchestration. The individual skills are short-running; the orchestrator is scaffolding for a long-running research loop.
+
+The repo-scoped skills live in [`.agents/skills/`](.agents/skills/). They follow the Codex skill structure: each skill has a `SKILL.md` with discovery metadata and task instructions, plus optional references. They operate on synthetic or approved governed data only.
 
 ## Run locally
 

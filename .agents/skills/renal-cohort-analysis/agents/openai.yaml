@@ -1,0 +1,4 @@
+interface:
+  display_name: "Renal Cohort Evidence"
+  short_description: "Assess synthetic renal cohort evidence and subgroups."
+  default_prompt: "Use $renal-cohort-analysis to assess a synthetic renal cohort evidence package."
