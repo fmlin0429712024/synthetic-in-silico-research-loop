@@ -8,6 +8,10 @@ RTRO demonstrates the closed-loop AI science pattern:
 
 It demonstrates the orchestration and decision layer behind an AI-scientist platform. It does **not** claim biological validation, treatment recommendation, or clinical efficacy.
 
+## 1. Research system context — the full evidence loop
+
+This diagram explains the **entire research system**. It includes upstream scientific tools and the long clinical-evidence flywheel. RTRO does not implement the upstream model or real trials; it makes the downstream evidence and workflow layer concrete.
+
 ```mermaid
 flowchart TD
     Q[Renal research question] --> H[Target / mechanism hypothesis]
@@ -47,6 +51,38 @@ Renal research is a sequence of expensive, uncertain decisions. The value of AI 
 | Decision | Traceable `GO` / `HOLD` / `NO-GO` | Scientist-reviewed experiment and program decisions |
 | Learning loop | Revised score and next action | New hypotheses, experiment designs, specialized model improvement, organizational knowledge |
 
+## 2. Skills orchestration — the RTRO delivery layer
+
+This is intentionally **not a second copy of the full pipeline**. It begins after the upstream model has produced a ranked research hypothesis. It shows the concrete, post-prioritization workflow that an FDE / agent-delivery team can implement and govern.
+
+```mermaid
+flowchart TD
+    A[Ranked research hypothesis<br/>from upstream prioritization model] --> E[renal-research-orchestration<br/>scaffolding]
+    E --> B[clinical-evidence-intake<br/>short-running]
+    B --> C[renal-cohort-analysis<br/>short-running]
+    C --> D[evidence-decision-pack<br/>short-running]
+    D --> F{Scientist review}
+    F -->|GO| G[Design next clinical validation]
+    G --> H[New trial / care-delivery evidence]
+    H --> E
+    F -->|HOLD| E
+    F -->|NO-GO| I[Preserve negative evidence]
+
+    classDef short fill:#dcfce7,stroke:#16a34a,color:#111827;
+    classDef scaffold fill:#e5e7eb,stroke:#4b5563,color:#111827;
+    class B,C,D short;
+    class E scaffold;
+```
+
+| Skill | Role |
+|---|---|
+| `renal-research-orchestration` | Long-running workflow **scaffold**: state, handoffs, re-entry conditions |
+| `clinical-evidence-intake` | Short-running: source metadata, provenance, and governance checks |
+| `renal-cohort-analysis` | Short-running: cohort, subgroup, and observational-evidence analysis plan |
+| `evidence-decision-pack` | Short-running: traceable scientist-review artifact |
+
+The skills do not build or retrain the proprietary model, access real patient data, or make medical decisions. They prototype the governed evidence workflow around the model.
+
 ## Scientific boundary
 
 All targets, molecules, lab results, cohort signals, and decisions are synthetic. This repository is educational software—not medical software.
@@ -58,17 +94,12 @@ All targets, molecules, lab results, cohort signals, and decisions are synthetic
 - Every meaningful real-world decision requires scientist review, data governance, and regulated validation.
 - Real DaVita or other patient data is **not** included and must never be placed in this public repository.
 
-## Explore the project
+## Supporting detail
 
 - [End-to-end pipeline, orchestration, and technology map](docs/PIPELINE.md)
 - [Synthetic data model and feedback loop](data/README.md)
-- [Phase 2: skills-based clinical evidence workflow](docs/SKILLS_WORKFLOW.md)
-
-## Phase 2: skills-based workflow scaffold
-
-The full pipeline can run for years. RTRO prototypes the post-prioritization part as small, inspectable Codex skills: clinical-evidence intake, renal-cohort analysis, evidence-decision packaging, and orchestration. The individual skills are short-running; the orchestrator is scaffolding for a long-running research loop.
-
-The repo-scoped skills live in [`.agents/skills/`](.agents/skills/). They follow the Codex skill structure: each skill has a `SKILL.md` with discovery metadata and task instructions, plus optional references. They operate on synthetic or approved governed data only.
+- [Skills implementation notes](docs/SKILLS_WORKFLOW.md)
+- [Repo-scoped skill folders](.agents/skills/)
 
 ## Run locally
 
