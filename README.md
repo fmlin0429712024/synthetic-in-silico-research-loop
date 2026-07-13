@@ -13,15 +13,24 @@ flowchart TD
     Q[Renal research question] --> H[Target / mechanism hypothesis]
     H --> S[Upstream scientific tools<br/>AlphaFold-type models + docking + literature]
     S --> C[Discovery or repurposing candidate hypotheses]
-    C --> M[Specialized therapeutic prioritization model]
-    T[Historical trial evidence<br/>synthetic in this POC] --> M
-    P[Dialysis-provider longitudinal patient data<br/>synthetic in this POC] --> M
+    C --> M[Specialized therapeutic prioritization model<br/>gray-box in this POC]
+    M --> V[Design clinical validation study]
+    V --> T[Clinical-trial data<br/>efficacy, safety, biomarkers]
+    P[Dialysis-provider data asset<br/>longitudinal patient records and outcomes<br/>DaVita-domain experience; synthetic proxy in this POC] --> E
+    T --> E[Clinical evidence integration]
+    H1[Historical trial / literature evidence] --> E
+    E --> M
     M --> D{Scientist-reviewed decision}
-    D -->|GO| N[Design next validation study]
-    D -->|HOLD| M
+    D -->|GO| V
+    D -->|HOLD| E
     D -->|NO-GO| X[Preserve negative evidence]
-    N --> R[New clinical-study evidence]
-    R --> M
+
+    classDef upstream fill:#dbeafe,stroke:#2563eb,color:#111827;
+    classDef data fill:#dcfce7,stroke:#16a34a,color:#111827;
+    classDef model fill:#e5e7eb,stroke:#4b5563,color:#111827;
+    class S upstream;
+    class P,T,H1,E data;
+    class M model;
 ```
 
 ## Why this matters
@@ -34,7 +43,7 @@ Renal research is a sequence of expensive, uncertain decisions. The value of AI 
 |---|---|---|
 | Research context | Fictional renal therapeutic hypothesis and target | Renal research question, literature, internal program context |
 | Upstream reasoning | Transparent discovery / repurposing candidate ranking | Structure/interaction models, docking, chemistry models, literature and data analysis |
-| Evidence | Synthetic trial-like and dialysis-provider cohort signals | Historical trial evidence, biomarkers, and governed longitudinal patient data |
+| Evidence | Synthetic clinical-trial-like and dialysis-provider cohort signals | Historical trial evidence, biomarkers, and governed longitudinal patient data |
 | Decision | Traceable `GO` / `HOLD` / `NO-GO` | Scientist-reviewed experiment and program decisions |
 | Learning loop | Revised score and next action | New hypotheses, experiment designs, specialized model improvement, organizational knowledge |
 
