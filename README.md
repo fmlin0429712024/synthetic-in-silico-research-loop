@@ -1,4 +1,4 @@
-# Agentic AI Solution POC — Drug Discovery Research Loop
+# Healthcare Agentic AI POC — Drug Discovery Research Loop
 
 ## RTRO — Renal Therapeutics Research Orchestrator
 
