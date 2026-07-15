@@ -1,4 +1,6 @@
-# RTRO — Renal Therapeutics Research Orchestrator
+# Agentic AI Solution POC — Drug Discovery Research Loop
+
+## RTRO — Renal Therapeutics Research Orchestrator
 
 A synthetic dry-lab POC for an AI-orchestrated renal therapeutics research pipeline. It connects upstream discovery and drug-repurposing hypotheses with downstream clinical evidence and iterative research decisions.
 
